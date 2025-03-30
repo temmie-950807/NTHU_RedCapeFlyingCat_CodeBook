@@ -151,7 +151,8 @@ struct polygon {
 //  可以在有 n 個點的凸包內，用 O(log n) 判斷一條直線：
 //  {1 : 穿過凸包, 0 : 剛好切過凸包, -1 : 沒碰到凸包}
     int line_cut_convex(line<T> L) {
-        point<T> p(L.a, L.b); //  記得 L 要 build
+        L.build();
+        point<T> p(L.a, L.b);
         auto gt = [&](int neg) {
             auto f = [&](int x, int y) {
                 return sign((v[x] - v[y]) * p) == neg;
@@ -168,7 +169,8 @@ struct polygon {
 //  -1 : 沒碰到凸包}
 /// 除非線段兩端點都不在凸包邊上，否則此函數回傳 0 的時候不一定表示線段沒有通過凸包內部 ///
     int segment_across_convex(line<T> L) {
-        point<T> p(L.a, L.b); //  記得 L 要 build
+        L.build();
+        point<T> p(L.a, L.b);
         auto gt = [&](int neg) {
             auto f = [&](int x, int y) {
                 return sign((v[x] - v[y]) * p) == neg;
@@ -201,7 +203,8 @@ struct polygon {
 //  -1 : 線段完全在凸包外面}
     int segment_pass_convex_interior(line<T> L) {
         if (in_convex(L.p1) == 1 || in_convex(L.p2) == 1) return 1;
-        point<T> p(L.a, L.b); //  記得 L 要 build
+        L.build();
+        point<T> p(L.a, L.b);
         auto gt = [&](int neg) {
             auto f = [&](int x, int y) {
                 return sign((v[x] - v[y]) * p) == neg;
