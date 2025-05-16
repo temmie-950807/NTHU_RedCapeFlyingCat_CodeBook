@@ -1,8 +1,10 @@
 \begin{itemize}
     \item 任意圖
         \begin{itemize}
-            \item \textbf{不能有孤點}，最大匹配 + 最小邊覆蓋 = $n$
-            - 點覆蓋的補集是獨立集。最小點覆蓋 + 最大獨立集 = $n$
+            \item 最大匹配 + 最小邊覆蓋 = $n$ （不能有孤點）
+            \item  點覆蓋的補集是獨立集。最小點覆蓋 + 最大獨立集 = $n$ 
+            \item  $w($最小權點覆蓋$)$ + $w($最大權獨立集$) = \sum{w_v}$
+            \item  （帶點權的二分圖可以用最小割解，構造請參考 Augment Path.cpp ）
         \end{itemize}
     \item 二分圖
         \begin{itemize}
